@@ -88,6 +88,17 @@ class App extends React.Component {
       });
   }
 
+  postProduct() {
+    API.postProduct({
+      "id": "11",
+      "type": "PW_TYPE",
+      "name": "A Playwright name",
+      "version": "v222",
+      "color": "green",
+      "extra": "EXTrraaaa"
+  });
+  }
+
   determineVisibleProducts() {
     const findProducts = (search) => {
       search = search.toLowerCase();
@@ -124,6 +135,9 @@ class App extends React.Component {
           <label className="form-label" htmlFor="input-product-search">
             Search
           </label>
+          <button className="btn btn-primary" type="button" onClick={this.postProduct}>
+            Add
+          </button>
           <input
             id="input-product-search"
             className="form-input"

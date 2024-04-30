@@ -26,6 +26,16 @@ export class API {
     return 'Bearer ' + new Date().toISOString();
   }
 
+  async postProduct(product) {
+    return axios
+      .post(this.withPath('/products'), product, {
+        headers: {
+          Authorization: this.generateAuthToken()
+        }
+      })
+      .then((r) => new Product(r.data));
+  }
+
   async getAllProducts() {
     return axios
       .get(this.withPath('/products'), {
